@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using csfetch.Models;
+using System.Diagnostics;
 
 namespace CliStatus
 {
@@ -6,26 +7,29 @@ namespace CliStatus
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(UserHostName());
-            Console.WriteLine(UserHostSpacer());
+            var ascii = new AsciiArt();
+            var platform = new Platform();
 
-            var swVers = new SwVers();
-            Console.WriteLine(swVers.ToString());
-            Console.WriteLine(Uname());
+            Console.Write(ascii.WindowsArt[0]);
+            Console.Write("  ");
+            Console.WriteLine(platform.ToString());
+            Console.Write(ascii.WindowsArt[1]);
+            Console.Write("  ");
+            Console.WriteLine(platform.TitleDashes());
 
-            // Environment.GetEnvironmentVariables
-        }
+            Console.Write(ascii.WindowsArt[2]);
+            Console.Write("  ");
+            Console.WriteLine(platform.ToOsString());
 
-        private static string UserHostName()
-        {
-            return $"{Environment.UserName}@{Environment.MachineName}";
-        }
+            Console.Write(ascii.WindowsArt[3]);
+            Console.Write("  ");
+            Console.WriteLine("Host:");
 
-        private static string UserHostSpacer()
-        {
-            // TODO: Should be some default or width of UserHostName, whichever
-            // is shorter
-            return "------------------------------";
+            Console.Write(ascii.WindowsArt[4]);
+            Console.Write("  ");
+            Console.WriteLine(platform.ToKernelString());
+
+            //var swVers = new SwVers();
         }
 
         private static string Uname()
