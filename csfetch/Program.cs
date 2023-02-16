@@ -23,11 +23,19 @@ namespace CliStatus
 
             Console.Write(ascii.WindowsArt[3]);
             Console.Write("  ");
-            Console.WriteLine("Host:");
+            Console.WriteLine(platform.ToHostString());
 
             Console.Write(ascii.WindowsArt[4]);
             Console.Write("  ");
             Console.WriteLine(platform.ToKernelString());
+
+            Console.Write(ascii.WindowsArt[5]);
+            Console.Write("  ");
+            Console.WriteLine(platform.ToMotherboardString());
+
+            Console.Write(ascii.WindowsArt[5]);
+            Console.Write("  ");
+            Console.WriteLine(platform.ToUptimeString());
 
             //var swVers = new SwVers();
         }
